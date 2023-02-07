@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,user-scalable=no" />
+  <title>林思雨专属相册</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div id="drag-container">
+    <div id="spin-container">
+      <img src="./images/02.jpg" alt="" />
+      <img src="./images/03.jpg" alt="" />
+      <img src="./images/04.jpg" alt="" />
+      <img src="./images/06.jpg" alt="" />
+      <img src="./images/18.jpg" alt="" />
+      <img src="./images/08.jpg" alt="" />
+      <img src="./images/09.jpg" alt="" />
+      <img src="./images/10.jpg" alt="" />
+
+      <!-- 地面中心的文字 -->
+      <p>有些人不知不觉就见了最后一面,有些人这辈子都见不了一面。</p>
+    </div>
+    <div id="ground"></div>
+  </div>
+
+  <div id="music-container"></div>
+
+  <div id="next-box">点我有惊喜</div>
+
+  <script>
+
+    // 全局变量
+    var radius = 240; // 相册半径
+    var autoRotate = true; // 是否自动旋转
+    var rotateSpeed = -60; // 每秒旋转多少度
+    var imgWidth = 120; // 照片宽度
+    var imgHeight = 170; // 照片高度
+
+    // 背景音乐地址, 为 null 没有音乐
+    var bgMusicURL = './music/周杰伦 - 告白气球 (Live).mp3'
+    var bgMusicControls = true; // 是否展示音乐控件
+
+    setTimeout(init, 100);
+
+    var odrag = document.getElementById("drag-container");
+    var ospin = document.getElementById("spin-container");
+    var aImg = ospin.getElementsByTagName("img");
+    var aVid = ospin.getElementsByTagName("video");
+    var aEle = [...aImg, ...aVid];
+
+    // 图像大小
+    ospin.style.width = imgWidth + "px";
+    ospin.style.height = imgHeight + "px";
+
+    // 地面大小取决于半径
+    var ground = document.getElementById("ground");
+    ground.style.width = radius * 3 + "px";
+    ground.style.height = radius * 3 + "px";
+
+    function init(delayTime) {
+      for (var i = 0; i < aEle.length; i++) {
+        aEle[i].style.transform =
+          "rotateY(" +
+          i * (360 / aEle.length) +
+          "deg) translateZ(" +
+          radius +
+          "px)";
+        aEle[i].style.transition = "transform 1s";
+        aEle[i].style.transitionDelay =
+          delayTime || (aEle.length - i) / 4 + "s";
+      }
+    }
+
+    function applyTranform(obj) {
+      // 限制相册的角度 (0~180)
+      // if (tY > 180) tY = 180;
+      // if (tY > 360) tY = 360;
+      // if (tY < 0) tY = 0;
+
+      // 应用角度
+      obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
+    }
+
+    function playSpin(yes) {
+      ospin.style.animationPlayState = yes ? "running" : "paused";
+    }
+
+    var sX,
+      sY,
+      nX,
+      nY,
+      desX = 0,
+      desY = 0,
+      tX = 0,
+      tY = 10;
+
+    // 自动旋转
+    if (autoRotate) {
+      var animationName = rotateSpeed > 0 ? "spin" : "spinRevert";
+      ospin.style.animation = `${animationName} ${Math.abs(
+        rotateSpeed
+      )}s infinite linear`;
+    }
+
+    // 添加背景音乐
+    if (bgMusicURL) {
+      document.getElementById("music-container").innerHTML += `
+        <audio
+          src="${bgMusicURL}"
+          ${bgMusicControls ? "controls" : ""}
+          autoplay
+          loop
+        >
+          <p>不好意思, 你的浏览器可能不支持音乐</p>
+        </audio>
+        `;
+    }
+
+    // 设置事件
+    document.onpointerdown = function (e) {
+      clearInterval(odrag.timer);
+      e = e || window.event;
+      var sX = e.clientX,
+        sY = e.clientY;
+
+      this.onpointermove = function (e) {
+        e = e || window.event;
+        var nX = e.clientX,
+          nY = e.clientY;
+        desX = nX - sX;
+        desY = nY - sY;
+        tX += desX * 0.1;
+        tY += desY * 0.1;
+        applyTranform(odrag);
+        sX = nX;
+        sY = nY;
+      };
+
+      this.onpointerup = function (e) {
+        odrag.timer = setInterval(function () {
+          desX *= 0.95;
+          desY *= 0.95;
+          tX += desX * 0.1;
+          tY += desY * 0.1;
+          applyTranform(odrag);
+          playSpin(false);
+          if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+            clearInterval(odrag.timer);
+            playSpin(true);
+          }
+        }, 17);
+        this.onpointermove = this.onpointerup = null;
+      };
+
+      return false;
+    };
+
+    document.onmousewheel = function (e) {
+      e = e || window.event;
+      var d = e.wheelDelta / 20 || -e.detail;
+      radius += d;
+      init(1);
+    };
+
+    document.getElementById('next-box').addEventListener('click', function() {
+      window.location.href='linsiyu.html'
+    })
+
+  </script>
+
+  <script>
+    
+  </script>
+</body>
+
+</html>

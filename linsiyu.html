@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李思雨专属相册</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="big-box">
+    <div class="box">
+      <ul class="minbox">
+        <li>
+          <img src="./images/11.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/05.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/13.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/14.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/15.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/16.jpg" alt="">
+        </li>
+      </ul>
+      <ol class="maxbox">
+        <li>
+          <img src="./images/18.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/05.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/20.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/17.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/16.jpg" alt="">
+        </li>
+        <li>
+          <img src="./images/19.jpg" alt="">
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div id="music-container"></div>
+  <div id="next-box">点我返回</div>
+
+  <script>
+    // 背景音乐地址
+    let bgMusicURL = './music/王铮亮、张靓颖 - 只是没有如果.mp3'
+    // 是否展示音乐控件
+    let bgMusicControls = true
+
+    if (bgMusicURL) {
+      document.getElementById('music-container').innerHTML += `
+      <audio
+        src="${bgMusicURL}"
+        ${bgMusicControls ? 'controls' : ''}
+        autoplay
+        loop
+      >
+        <p>你的浏览器可能不支持音乐, 请更换其他浏览器</p>
+      </audio>
+      `
+    }
+
+    document.getElementById('next-box').addEventListener('click', function() {
+      window.location.href='index.html'
+    })
+  </script>
+</body>
+
+</html>

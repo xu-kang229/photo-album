@@ -26,22 +26,40 @@
     <div id="ground"></div>
   </div>
 
-  <div id="music-container"></div>
-
-  <div id="next-box">点我有惊喜</div>
+  <div class="header">
+    <div id="music-container">
+      <div id="music-logo">
+        <img class="music-icon" src="./images/music-logo.jpg" alt="">
+      </div>
+      <audio class="music-audio" src="./music/周杰伦 - 告白气球 (Live).mp3" autoplay loop>
+        <p>不好意思, 你的浏览器可能不支持音乐</p>
+      </audio>
+    </div>
+    <div id="next-box">点我有惊喜</div>
+  </div>
 
   <script>
-
     // 全局变量
     var radius = 15; // 相册半径
     var autoRotate = true; // 是否自动旋转
     var rotateSpeed = -60; // 每秒旋转多少度
     var imgWidth = 7.5; // 照片宽度
     var imgHeight = 10.625; // 照片高度
+    let musicWhether = false
 
-    // 背景音乐地址, 为 null 没有音乐
-    var bgMusicURL = './music/周杰伦 - 告白气球 (Live).mp3'
-    var bgMusicControls = true; // 是否展示音乐控件
+    // 自定义背景音乐控件
+    document.querySelector('#music-logo').addEventListener('click', function () {
+      if (!musicWhether) {
+        document.querySelector('.music-audio').play()
+        // document.querySelector('#music-logo').style.animation = `spinMusicLogo 6s infinite linear`;
+        document.querySelector('#music-logo').className = 'start'
+        musicWhether = !musicWhether
+      } else {
+        document.querySelector('.music-audio').pause()
+        document.querySelector('#music-logo').className = 'paused'
+        musicWhether = !musicWhether
+      }
+    })
 
     setTimeout(init, 100);
 
@@ -105,20 +123,6 @@
       )}s infinite linear`;
     }
 
-    // 添加背景音乐
-    if (bgMusicURL) {
-      document.getElementById("music-container").innerHTML += `
-        <audio
-          src="${bgMusicURL}"
-          ${bgMusicControls ? "controls" : ""}
-          autoplay
-          loop
-        >
-          <p>不好意思, 你的浏览器可能不支持音乐</p>
-        </audio>
-        `;
-    }
-
     // 设置事件
     document.onpointerdown = function (e) {
       clearInterval(odrag.timer);
@@ -165,14 +169,14 @@
       init(1);
     };
 
-    document.getElementById('next-box').addEventListener('click', function() {
-      window.location.href='linsiyu.html'
+    document.getElementById('next-box').addEventListener('click', function () {
+      window.location.href = 'linsiyu.html'
     })
 
   </script>
 
   <script>
-    
+
   </script>
 </body>
 

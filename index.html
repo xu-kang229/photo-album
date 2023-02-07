@@ -33,11 +33,11 @@
   <script>
 
     // 全局变量
-    var radius = 240; // 相册半径
+    var radius = 15; // 相册半径
     var autoRotate = true; // 是否自动旋转
     var rotateSpeed = -60; // 每秒旋转多少度
-    var imgWidth = 120; // 照片宽度
-    var imgHeight = 170; // 照片高度
+    var imgWidth = 7.5; // 照片宽度
+    var imgHeight = 10.625; // 照片高度
 
     // 背景音乐地址, 为 null 没有音乐
     var bgMusicURL = './music/周杰伦 - 告白气球 (Live).mp3'
@@ -52,13 +52,13 @@
     var aEle = [...aImg, ...aVid];
 
     // 图像大小
-    ospin.style.width = imgWidth + "px";
-    ospin.style.height = imgHeight + "px";
+    ospin.style.width = imgWidth + "rem";
+    ospin.style.height = imgHeight + "rem";
 
     // 地面大小取决于半径
     var ground = document.getElementById("ground");
-    ground.style.width = radius * 3 + "px";
-    ground.style.height = radius * 3 + "px";
+    ground.style.width = radius * 3 + "rem";
+    ground.style.height = radius * 3 + "rem";
 
     function init(delayTime) {
       for (var i = 0; i < aEle.length; i++) {
@@ -67,7 +67,7 @@
           i * (360 / aEle.length) +
           "deg) translateZ(" +
           radius +
-          "px)";
+          "rem)";
         aEle[i].style.transition = "transform 1s";
         aEle[i].style.transitionDelay =
           delayTime || (aEle.length - i) / 4 + "s";

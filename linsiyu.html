@@ -93,6 +93,56 @@
     document.getElementById('next-box').addEventListener('click', function() {
       window.location.href='index.html'
     })
+
+    let maxbox = document.querySelector('.maxbox')
+    let maxli = maxbox.querySelectorAll('li')
+    // 判断是不是苹果手机
+    // console.log('是否是苹果手机', /iPhone/i.test(navigator.userAgent))
+    document.querySelector('.box').addEventListener('click', function (e) {
+      if (/iPhone/i.test(navigator.userAgent)) {
+        maxli.forEach((item, index) => {
+          item.classList.add('boxhover')
+
+          switch (index) {
+            case 0:
+              item.classList.add('boxhoverolli1')
+              break;
+
+            case 1:
+              item.classList.add('boxhoverolli2')
+              break;
+
+            case 2:
+              item.classList.add('boxhoverolli3')
+              break;
+
+            case 3:
+              item.classList.add('boxhoverolli4')
+              break;
+
+            case 4:
+              item.classList.add('boxhoverolli5')
+              break;
+
+            case 5:
+              item.classList.add('boxhoverolli6')
+              break;
+
+            default:
+              break;
+          }
+        })
+      }
+      e.stopPropagation()
+    })
+    // 点击空白处动画
+    document.querySelector('.big-box').addEventListener('click', function () {
+      if (/iPhone/i.test(navigator.userAgent)) {
+        maxli.forEach((item) => {
+          item.className = ''
+        })
+      }
+    })
   </script>
 </body>
 

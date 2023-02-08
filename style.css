@@ -28,9 +28,6 @@
 }
 
 #music-container {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
 }
 
 #music-logo {
@@ -61,7 +58,6 @@
   line-height: 3.375rem;
   text-align: center;
   border-radius: 1.6875rem;
-  /* background-color: #fff; */
   background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#86ec41), to(rgb(236, 80, 75)));
   cursor: pointer;
 }
@@ -119,33 +115,25 @@ img {
 }
 
 .minbox li:nth-child(1) {
-  /* background: url(images/11.jpg) no-repeat 0 0; */
   transform: translateZ(3.125rem);
 }
 .minbox li:nth-child(2) {
-  /* background: url(images/12.jpg); */
   transform: rotateX(180deg) translateZ(3.125rem);
 }
 .minbox li:nth-child(3) {
-  /* background: url(images/13.jpg); */
   transform: rotateX(-90deg) translateZ(3.125rem);
 }
 .minbox li:nth-child(4) {
-  /* background: url(images/14.jpg); */
   transform: rotateX(90deg) translateZ(3.125rem);
 }
 .minbox li:nth-child(5) {
-  /* background: url(images/15.jpg); */
   transform: rotateY(90deg) translateZ(3.125rem);
 }
 .minbox li:nth-child(6) {
-  /* background: url(images/16.jpg); */
   transform: rotateY(-90deg) translateZ(3.125rem);
 }
 
 .maxbox {
-  /* width: 800px;
-  height: 400px; */
   position: absolute;
   left: 0;
   top: -1.25rem;
@@ -165,27 +153,21 @@ img {
 }
 
 .maxbox li:nth-child(1) {
-  /* background: url(images/18.jpg); */
   transform: translateZ(6.25rem);
 }
 .maxbox li:nth-child(2) {
-  /* background: url(images/19.jpg); */
   transform: rotateX(180deg) translateZ(6.25rem);
 }
 .maxbox li:nth-child(3) {
-  /* background: url(images/20.jpg); */
   transform: rotateX(-90deg) translateZ(6.25rem);
 }
 .maxbox li:nth-child(4) {
-  /* background: url(images/17.jpg); */
   transform: rotateX(90deg) translateZ(6.25rem);
 }
 .maxbox li:nth-child(5) {
-  /* background: url(images/16.jpg); */
   transform: rotateY(-90deg) translateZ(6.25rem);
 }
 .maxbox li:nth-child(6) {
-  /* background: url(images/15.jpg); */
   transform: rotateY(90deg) translateZ(6.25rem);
 }
 
@@ -195,6 +177,14 @@ img {
   opacity: 0.8;
   left: -6.25rem;
   top: -6.25rem;
+}
+
+.boxhover {
+  width: 25rem !important;
+  height: 25rem !important;
+  opacity: 0.8 !important;
+  left: -6.25rem !important;
+  top: -6.25rem !important;
 }
 
 .box:hover ol li:nth-child(1) {
@@ -213,6 +203,25 @@ img {
   transform: rotateY(-90deg) translateZ(18.75rem);
 }
 .box:hover ol li:nth-child(6) {
+  transform: rotateY(90deg) translateZ(18.75rem);
+}
+
+.boxhoverolli1 {
+  transform: translateZ(18.75rem);
+}
+.boxhoverolli2 {
+  transform: rotateX(180deg) translateZ(18.75rem);
+}
+.boxhoverolli3 {
+  transform: rotateX(-90deg) translateZ(18.75rem);
+}
+.boxhoverolli4 {
+  transform: rotateX(90deg) translateZ(18.75rem);
+}
+.boxhoverolli5 {
+  transform: rotateY(-90deg) translateZ(18.75rem);
+}
+.boxhoverolli6 {
   transform: rotateY(90deg) translateZ(18.75rem);
 }
 

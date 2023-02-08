@@ -55,28 +55,41 @@
     </div>
   </div>
 
-  <div id="music-container"></div>
-  <div id="next-box">点我返回</div>
-
-  <script>
-    // 背景音乐地址
-    let bgMusicURL = './music/王铮亮、张靓颖 - 只是没有如果.mp3'
-    // 是否展示音乐控件
-    let bgMusicControls = true
-
-    if (bgMusicURL) {
-      document.getElementById('music-container').innerHTML += `
+  <div class="header">
+    <div id="music-container">
+      <div id="music-logo">
+        <img class="music-icon" src="./images/music-logo.jpg" alt="">
+      </div>
       <audio
-        src="${bgMusicURL}"
-        ${bgMusicControls ? 'controls' : ''}
+        class="music-audio"
+        src="./music/王铮亮、张靓颖 - 只是没有如果.mp3"
         autoplay
         loop
       >
         <p>你的浏览器可能不支持音乐, 请更换其他浏览器</p>
       </audio>
-      `
-    }
+    </div>
+    <div id="next-box">回去吧</div>
+  </div>
 
+  <script>
+    let musicWhether = false
+
+    // 背景音乐播放
+    document.querySelector('#music-logo').addEventListener('click', function () {
+      if (!musicWhether) {
+        document.querySelector('.music-audio').play()
+        // document.querySelector('#music-logo').style.animation = `spinMusicLogo 6s infinite linear`;
+        document.querySelector('#music-logo').className = 'start'
+        musicWhether = !musicWhether
+      } else {
+        document.querySelector('.music-audio').pause()
+        document.querySelector('#music-logo').className = 'paused'
+        musicWhether = !musicWhether
+      }
+    })
+
+    // 返回上一页
     document.getElementById('next-box').addEventListener('click', function() {
       window.location.href='index.html'
     })
